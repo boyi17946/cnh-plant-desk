@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#1f2420"/>
+  <rect x="220" y="40" width="40" height="280" fill="#8a8f86"/>
+  <ellipse cx="240" cy="180" rx="90" ry="28" fill="#3d4a3a"/>
+  <ellipse cx="240" cy="180" rx="70" ry="16" fill="#6b3a1e"/>
+  <text x="40" y="40" fill="#e8efe4" font-family="monospace" font-size="18">L220 left boom rod weep</text>
+  <text x="40" y="330" fill="#b7c2b0" font-family="monospace" font-size="14">Bay A PDI · dealer truck 15:00</text>
+</svg>
