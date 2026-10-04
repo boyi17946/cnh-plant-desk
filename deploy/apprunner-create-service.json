@@ -6,7 +6,7 @@
       "ConnectionArn": "arn:aws:apprunner:REGION:ACCOUNT:connection/github/CONNECTION_ID"
     },
     "CodeRepository": {
-      "RepositoryUrl": "https://github.com/OWNER/cnh-plant-desk",
+      "RepositoryUrl": "https://github.com/boyi17946/cnh-plant-desk",
       "SourceCodeVersion": {
         "Type": "BRANCH",
         "Value": "main"
