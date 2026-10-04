@@ -13,6 +13,13 @@ npm run dev
 
 Dev server binds **0.0.0.0:43147**. Open [http://127.0.0.1:43147](http://127.0.0.1:43147).
 
+Production (after a build; this is `npm start`, port **8080**):
+
+```bash
+npm run build
+npm start
+```
+
 | Route | Who |
 | --- | --- |
 | `/` | Shift board |
