@@ -1,13 +1,15 @@
 version: 1.0
-runtime: docker
+runtime: nodejs22
 build:
   commands:
     build:
-      - echo "Image is built in CI and pushed to ECR"
+      - npm ci --include=dev
+      - npm run build
 run:
-  command: node server.js
+  command: npm start
   network:
     port: 8080
+    env: PORT
   env:
     - name: NODE_ENV
       value: production
@@ -22,6 +24,3 @@ run:
     timeout: 5
     healthy_threshold: 1
     unhealthy_threshold: 5
-  instance:
-    cpu: 1 vCPU
-    memory: 2 GB

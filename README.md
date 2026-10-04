@@ -34,18 +34,24 @@ Restore the Saturday overtime demo: **Restore demo seed** on the shift board (`P
 
 Runtime data: `.data/plant-store.json`. Photos: `public/uploads/`.
 
-## Docker → ECR → App Runner
+## App Runner (GitHub source)
 
-Target instance: **1 vCPU / 2 GB**. No GPU on this service.
+App Runner reads `apprunner.yaml` from this repo:
+
+- Build: `npm ci --include=dev` then `npm run build`
+- Start: `npm start` (standalone server, port **8080**)
+- Health: `GET /api/health`
+- Instance (free-tier pairing): **0.25 vCPU / 1 GB**, no GPU
+- Auto-deploy: on when the service is connected to GitHub `main`
+
+Create the GitHub repo, then the App Runner GitHub connection in the AWS console (OAuth). Fill `OWNER`, `REGION`, `ACCOUNT`, and `CONNECTION_ID` in `deploy/apprunner-create-service.json` and run:
 
 ```bash
-docker build -t cnh-plant-desk .
-# tag + push to ECR, then:
 aws apprunner create-service --cli-input-json file://deploy/apprunner-create-service.json
 ```
 
-`apprunner.yaml` documents the same run/health settings. Replace `ACCOUNT` and `REGION` in the JSON before calling CreateService.
+A `Dockerfile` remains for ECR if you later want an image-based service instead.
 
 **Ephemeral store:** App Runner disk is not durable. The JSON plant store and uploads reset when the instance is replaced. A real plant would put the desk on RDS (or similar) and photos on S3. Optional live-model keys belong in App Runner environment variables, not in the image.
 
-Container listens on `8080` (`PORT`).
+The process listens on `8080` (`PORT`).
